@@ -1,0 +1,17 @@
+<!-- result.html  inherits from index.html -->
+{% extends 'index.html' %}
+
+{% block content %}
+
+    <!-- container for displaying the submitted information -->
+    <div class="result-container">
+        <h1>Submitted Info</h1>
+        <p>Name: {{ name }}</p>
+        <p>Dojo Location: {{ location }}</p>
+        <p>Favorite Language: {{ language }}</p>
+        <p>Gender: {{ gender }}</p>
+        <p>Terms Accepted: {{ terms }}</p>
+        <p>Comment: {{ comment }}</p>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,65 @@
+<!-- form.html inherits from index.html -->
+{% extends 'index.html' %}
+
+{% block content %}
+
+    <!-- form of the survey -->
+    <form action="/submit" method="post">
+
+        <!-- CSRF token for security -->
+        {% csrf_token %}
+
+        <!-- Name field -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <!-- Dojo Location dropdown -->
+        <label for="location">Dojo Location:</label>
+        <select id="location" name="location" required>
+            <option value="">Select a location</option>
+            <option value="Mountain View">Gaza</option>
+            <option value="Seattle">Jerusalem</option>
+            <option value="Dallas">Ramallah</option>
+            <option value="Chicago">Hebron</option>
+            <option value="Tulsa">Nablus</option>
+            <option value="DC">Bethlehem</option>
+        </select><br><br>
+
+        <!-- Favorite Language dropdown -->
+        <label for="language">Favorite Language:</label>
+        <select id="language" name="language" required>
+            <option value="">Select a language</option>
+            <option value="Python">Python</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Java">Java</option>
+            <option value="C#">C#</option>
+            <option value="Ruby">Ruby</option>
+            <option value="Go">Go</option>
+        </select><br><br>
+
+        <!-- Gender radio buttons -->
+        <label>Gender:</label>
+        <div class="radio-group">
+            <div class="radio-option">
+                <input type="radio" id="male" name="gender" value="Male">
+                <label for="male" style="margin:0; font-weight:normal;">Male</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female" style="margin:0; font-weight:normal;">Female</label>
+            </div>
+        </div>
+
+        <!-- Comment textarea -->
+        <label for="comment">Comment (optional):</label><br>
+        <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br><br>
+        
+        <!-- Terms and conditions checkbox -->
+        <div class="checkbox-group">
+            <input type="checkbox" id="terms" name="terms" value="accepted" required>
+            <label for="terms">I accept the terms and conditions</label>
+        </div>
+        <input type="submit" value="Submit">
+
+    </form>
+{% endblock %}
