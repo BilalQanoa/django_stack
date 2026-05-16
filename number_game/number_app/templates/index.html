@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Number Game</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the Great Number Game!</h1>
+        <p>I am thinking of a number between 1 and 100</p>
+        <p>Take a guess!</p>
+
+        {% if request.session.status %}
+        {% if request.session.status == "correct" %}
+        <div class="box success">
+            <h2>{{ request.session.target_num }} was the number!</h2>
+            <a href="{% url 'reset' %}" class="btn-play">Play Again!</a>
+        </div>
+        {% elif request.session.attempts >= 5 %}
+        <div class="box danger">
+            <h2>You Lose! The number was {{ request.session.target_num }}</h2>
+            <a href="{% url 'reset' %}" class="btn-play">Try Again!</a>
+        </div>
+        {% elif request.session.status == "low" %}
+        <div class="box danger">
+            <h2>Too Low!</h2>
+        </div>
+        {% elif request.session.status == "high" %}
+        <div class="box danger">
+            <h2>Too High!</h2>
+        </div>
+        {% endif %}
+        {% endif %}
+
+        {% if request.session.status != "correct" and request.session.attempts < 5 %} <form action="{% url 'guess' %}"
+            method="post">
+            {% csrf_token %}
+            <input type="number" name="guess" min="1" max="100" required>
+            <br>
+            <button type="submit">Submit</button>
+            </form>
+            {% endif %}
+
+            <p>Attempts: {{ request.session.attempts }} / 5</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f7f7f7;
+    padding-top: 50px;
+}
+
+.container {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.box {
+    width: 250px;
+    height: 250px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 5px solid black;
+}
+
+.danger {
+    background-color: #e74c3c;
+}
+
+.success {
+    background-color: #2ecc71;
+}
+
+input[type="number"] {
+    padding: 10px;
+    font-size: 18px;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+button,
+.btn-play {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover,
+.btn-play:hover {
+    background-color: #2980b9;
+}
