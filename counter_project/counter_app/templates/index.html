@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="counter-card">
+        <h1>Counter</h1>
+
+        <div class="count-display">
+            {{ request.session.counter }}
+        </div>
+        <p>Times Visited</p>
+
+        <div class="actions">
+            <a href="{% url 'add_two' %}" class="btn-add">Add Two (+2)</a>
+            <a href="{% url 'destroy' %}" class="btn-destroy">Destroy Session</a>
+        </div>
+
+        <form action="{% url 'add_specific' %}" method="post">
+            {% csrf_token %}
+            <input type="number" name="amount" placeholder="Amount" required>
+            <button type="submit">Increment by Amount</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
