@@ -1,0 +1,39 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.gold-count {
+    font-size: 24px;
+    font-weight: bold;
+    border: 2px solid black;
+    padding: 10px;
+    display: inline-block;
+    background: white;
+}
+
+.box {
+    border: 2px solid black;
+    padding: 20px;
+    text-align: center;
+    background: white;
+    min-height: 200px;
+}
+
+.activities-log {
+    height: 200px;
+    overflow-y: scroll;
+    border: 2px solid black;
+    background: white;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.text-success {
+    color: green !important;
+}
+
+.text-danger {
+    color: red !important;
+}
