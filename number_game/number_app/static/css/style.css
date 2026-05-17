@@ -1,55 +1,44 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f7f7f7;
-    padding-top: 50px;
+    background-color: #f0f2f5;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.leaderboard-card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.game-card {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.status-box {
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.low,
+.high {
+    background-color: #dc3545;
+}
+
+.correct {
+    background-color: #198754;
+}
+
+.lose {
+    background-color: #212529;
 }
 
 .container {
-    width: 500px;
-    margin: 0 auto;
-}
-
-.box {
-    width: 250px;
-    height: 250px;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    border: 5px solid black;
-}
-
-.danger {
-    background-color: #e74c3c;
-}
-
-.success {
-    background-color: #2ecc71;
-}
-
-input[type="number"] {
-    padding: 10px;
-    font-size: 18px;
-    width: 100px;
-    margin-bottom: 10px;
-}
-
-button,
-.btn-play {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-}
-
-button:hover,
-.btn-play:hover {
-    background-color: #2980b9;
+    margin-top: auto;
+    margin-bottom: auto;
 }
