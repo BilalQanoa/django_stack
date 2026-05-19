@@ -6,13 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Index Page</h1>
-    <h3>Create a User</h3>
-    <form action='/users' method='post'>
-        {% csrf_token %}
-        Name: <input type='text' name='name'>
-        Email: <input type='text' name='email'>
-        <input type='submit' value='create user'>
-    </form>
+    <h1>Users</h1>
+    {% for user in users %}
+
+      <p>{{ user.id }} - {{ user.name }}</p>
+      <p>{{user.number}} - {{user.email}}</p>
+      <hr>
+      <br>
+
+    {% endfor %}
 </body>
 </html>
