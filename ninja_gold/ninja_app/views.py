@@ -5,15 +5,10 @@ from django.shortcuts import redirect, render
 def index(request):
     if 'gold' not in request.session:
         request.session['gold'] = 0
-    if 'activities' not in request.session:
         request.session['activities'] = []
     return render(request, 'index.html')
 
 def process_money(request):
-    if 'gold' not in request.session:
-        request.session['gold'] = 0
-    if 'activities' not in request.session:
-        request.session['activities'] = []
 
     if value := request.POST.get('building'):
         import random
