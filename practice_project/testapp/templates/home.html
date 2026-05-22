@@ -6,12 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Users</h1>
-    {% for user in users %}
-    <p>{{ user.id }} - {{ user.name }}</p>
-    <p>{{user.number}} - {{user.email}}</p>
-    <hr>
-    <br>
-    {% endfor %}
+    <h1>Home Page</h1>
+    <a href="{% url 'test:form' %}">Go</a>
 </body>
 </html>
