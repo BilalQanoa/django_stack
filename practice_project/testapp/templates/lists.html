@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>LISTS: </h1>
+    {% for list in lists%}
+        <a href="{% url  'test:details' list.id%}">Name: {{list.first_name}} {{list.last_name}}</a>
+        <br>
+        <a href="{% url 'test:update' list.id %}"> --update</a>
+        <br>
+        <a href="{% url 'test:delete' list.id %}"> --delete</a>
+        <br>
+    {% endfor %}
+    <hr>
+    {% for list in var%}
+    <a href="{% url  'test:details' list.id%}">Name: {{list.first_name}} {{list.last_name}}</a>
+    <br>
+    <a href="{% url 'test:update' list.id %}"> --update</a>
+    <br>
+    <a href="{% url 'test:delete' list.id %}"> --delete</a>
+    <br>
+    {% endfor %}
+</body>
+</html>
