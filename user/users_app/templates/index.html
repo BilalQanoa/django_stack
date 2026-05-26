@@ -1,11 +1,78 @@
+
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <div class="container">
+        <!-- Users List Section -->
+        <div class="card">
+            <div class="header-container">
+                <h1>All the Users</h1>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{user.id}}</td>
+                            <td>{{user.first_name}} {{user.last_name}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.age}}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="empty-state">There is no User</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Add User Section -->
+        <div class="card">
+            <h1>Add User</h1>
+            <form action="{% url 'create' %}" method="post">
+                {% csrf_token %}
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="first_name">Enter First Name</label>
+                        <input type="text" id="first_name" name="first_name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="last_name">Enter Last Name</label>
+                        <input type="text" id="last_name" name="last_name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Enter Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="age">Enter Age</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
+                </div>
+                <input type="submit" value="ADD USER">
+            </form>
+        </div>
+    </div>
 </body>
 </html>
