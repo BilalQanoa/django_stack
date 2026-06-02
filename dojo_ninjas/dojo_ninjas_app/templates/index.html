@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojos and Ninjas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .top-section {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+        .form-container {
+            width: 40%;
+        }
+        .form-container h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .form-group label {
+            width: 100px;
+            text-align: left;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        .form-group input, .form-group select {
+            flex-grow: 1;
+            padding: 5px;
+            border: 1px solid #000;
+        }
+        .btn {
+            padding: 5px 15px;
+            background-color: #fff;
+            border: 2px solid #000;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 #000;
+            margin-left: 110px;
+        }
+        .btn:active {
+            box-shadow: none;
+            transform: translate(2px, 2px);
+        }
+        
+        .bottom-section {
+            margin-top: 60px;
+            text-align: center;
+        }
+        .dojo-list {
+            width: 60%;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .dojo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .dojo-info p {
+            margin: 0 0 10px 0;
+            font-weight: normal;
+        }
+        .dojo-info ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .delete-btn {
+            padding: 5px 10px;
+            background-color: #fff;
+            border: 2px solid #000;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 #000;
+        }
+        .delete-btn:active {
+            box-shadow: none;
+            transform: translate(2px, 2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-section">
+            <div class="form-container">
+                <h2>Add a Dojo</h2>
+                <form action="/add_dojo" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State:</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                    <button type="submit" class="btn">Add</button>
+                </form>
+            </div>
+            <div class="form-container">
+                <h2>Add a Ninja</h2>
+                <form action="/add_ninja" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" id="first_name" name="first_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" id="last_name" name="last_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dojo">Dojo:</label>
+                        <select id="dojo" name="dojo" required>
+                            <option value="" disabled selected>Dojo</option>
+                            {% for dojo in dojos %}
+                                <option value="{{ dojo.id }}">{{ dojo.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Add</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="bottom-section">
+            <h2>All the Dojos</h2>
+            <div class="dojo-list">
+                {% for dojo in dojos %}
+                <div class="dojo-item">
+                    <div class="dojo-info">
+                        <p>Ninjas at the {{ dojo.name }}</p>
+                        <ul>
+                            {% for ninja in dojo.ninjas.all %}
+                                <li>{{ ninja.first_name }} {{ ninja.last_name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <form action="/delete_dojo/{{ dojo.id }}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-btn">Delete Dojo</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
