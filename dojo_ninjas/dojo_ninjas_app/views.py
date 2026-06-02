@@ -19,13 +19,12 @@ def add_dojo(request):
 def add_ninja(request):
     if request.method == 'POST':
         try:
-            dojo = Dojo.objects.get(id=request.POST['dojo'])
             Ninja.objects.create(
                 first_name=request.POST['first_name'],
                 last_name=request.POST['last_name'],
-                dojo=dojo
+                dojo=Dojo.objects.get(id=request.POST['dojo'])
             )
-        except (KeyError, Dojo.DoesNotExist):
+        except:
             pass
     return redirect('/')
 
@@ -34,6 +33,6 @@ def delete_dojo(request, dojo_id):
         try:
             dojo = Dojo.objects.get(id=dojo_id)
             dojo.delete()
-        except Dojo.DoesNotExist:
+        except:
             pass
     return redirect('/')
