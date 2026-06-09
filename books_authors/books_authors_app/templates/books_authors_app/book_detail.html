@@ -1,0 +1,54 @@
+{% extends "books_authors_app/base.html" %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card p-5 mb-4">
+            <h1 class="display-5 fw-bold mb-3 text-primary">{{ book.title }}</h1>
+            <p class="text-muted mb-2"><strong>ID:</strong> {{ book.id }}</p>
+            <p class="lead mb-4"><strong>Description:</strong><br>{{ book.desc }}</p>
+            
+            <hr class="my-4">
+            
+            <h4 class="fw-bold mb-3">Authors</h4>
+            {% if authors %}
+                <ul class="list-group mb-4 shadow-sm rounded-3">
+                    {% for author in authors %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                            <span class="fw-medium">{{ author.first_name }} {{ author.last_name }}</span>
+                            <a href="/authors/{{ author.id }}" class="badge bg-secondary text-decoration-none rounded-pill px-3 py-2">View Profile</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="alert alert-light border text-muted">No authors assigned to this book yet.</div>
+            {% endif %}
+            
+            {% if available_authors %}
+                <div class="mt-4 p-4 bg-light rounded-3">
+                    <form action="/books/{{ book.id }}" method="POST" class="d-flex align-items-end gap-3">
+                        {% csrf_token %}
+                        <div class="flex-grow-1">
+                            <label for="author_id" class="form-label fw-semibold text-dark">Add an Author:</label>
+                            <select class="form-select" id="author_id" name="author_id" required>
+                                <option value="" disabled selected>Select an Author</option>
+                                {% for author in available_authors %}
+                                    <option value="{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary px-4 fw-bold">Add</button>
+                    </form>
+                </div>
+            {% else %}
+                <div class="alert alert-info mt-4 mb-0 fw-medium">All available authors are already assigned to this book.</div>
+            {% endif %}
+        </div>
+        <div class="text-center">
+            <a href="/" class="text-decoration-none text-secondary fw-semibold">← Back to All Books</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

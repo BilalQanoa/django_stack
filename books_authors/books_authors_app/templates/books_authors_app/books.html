@@ -1,0 +1,53 @@
+{% extends "books_authors_app/base.html" %}
+
+{% block title %}All Books{% endblock %}
+
+{% block content %}
+<div class="row gx-5">
+    <div class="col-md-5 mb-4">
+        <h2 class="page-header">Add a Book</h2>
+        <div class="card p-4">
+            <form action="/" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="title" class="form-label fw-semibold">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
+                </div>
+                <div class="mb-4">
+                    <label for="desc" class="form-label fw-semibold">Description</label>
+                    <textarea class="form-control" id="desc" name="desc" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 fw-bold">Add Book</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="col-md-7">
+        <h2 class="page-header">All Books</h2>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col" class="px-4 py-3">ID</th>
+                        <th scope="col" class="px-4 py-3">Title</th>
+                        <th scope="col" class="px-4 py-3 text-end">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                    <tr>
+                        <td class="fw-semibold text-secondary px-4">{{ book.id }}</td>
+                        <td class="fw-medium px-4">{{ book.title }}</td>
+                        <td class="px-4 text-end"><a href="/books/{{ book.id }}" class="text-decoration-none text-primary fw-semibold">View</a></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" class="text-center text-muted py-4">No books available. Add one!</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

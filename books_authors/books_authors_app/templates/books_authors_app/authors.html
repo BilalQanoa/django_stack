@@ -1,0 +1,57 @@
+{% extends "books_authors_app/base.html" %}
+
+{% block title %}All Authors{% endblock %}
+
+{% block content %}
+<div class="row gx-5">
+    <div class="col-md-5 mb-4">
+        <h2 class="page-header">Add an Author</h2>
+        <div class="card p-4">
+            <form action="/authors" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="first_name" class="form-label fw-semibold">First Name</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="last_name" class="form-label fw-semibold">Last Name</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" required>
+                </div>
+                <div class="mb-4">
+                    <label for="notes" class="form-label fw-semibold">Notes</label>
+                    <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 fw-bold">Add Author</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="col-md-7">
+        <h2 class="page-header">All Authors</h2>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col" class="px-4 py-3">ID</th>
+                        <th scope="col" class="px-4 py-3">Name</th>
+                        <th scope="col" class="px-4 py-3 text-end">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for author in authors %}
+                    <tr>
+                        <td class="fw-semibold text-secondary px-4">{{ author.id }}</td>
+                        <td class="fw-medium px-4">{{ author.first_name }} {{ author.last_name }}</td>
+                        <td class="px-4 text-end"><a href="/authors/{{ author.id }}" class="text-decoration-none text-primary fw-semibold">View</a></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" class="text-center text-muted py-4">No authors available. Add one!</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

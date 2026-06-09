@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Books & Authors{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+            color: #333;
+        }
+        .navbar {
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .btn-primary {
+            background-color: #4f46e5;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+        }
+        .btn-primary:hover {
+            background-color: #4338ca;
+        }
+        .table {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 0;
+        }
+        .table thead th {
+            background-color: #f1f5f9;
+            border-bottom: none;
+            color: #475569;
+            font-weight: 600;
+        }
+        .table tbody tr {
+            transition: background-color 0.15s;
+        }
+        .table tbody tr:hover {
+            background-color: #f8fafc;
+        }
+        .page-header {
+            margin-bottom: 2rem;
+            color: #1e293b;
+            font-weight: 700;
+        }
+        .table-responsive {
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5 py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">📚 Books & Authors</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="/">Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="/authors">Authors</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container pb-5">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
