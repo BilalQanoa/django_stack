@@ -1,0 +1,51 @@
+{% extends 'tv_shows_app/base.html' %}
+
+{% block title %}All Shows{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="table-wrapper">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="m-0 text-dark fw-bold" style="letter-spacing: -0.5px;"><i class="fas fa-list text-primary me-2"></i>Shows Directory</h2>
+        </div>
+        
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Network</th>
+                        <th>Release Date</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for show in shows %}
+                    <tr>
+                        <td>{{ show.id }}</td>
+                        <td class="fw-medium">{{ show.title }}</td>
+                        <td>{{ show.network }}</td>
+                        <td>{{ show.release_date|date:"Y-m-d" }}</td>
+                        <td class="text-center">
+                            <a href="/shows/{{ show.id }}" class="action-link text-primary">Show</a> |
+                            <a href="/shows/{{ show.id }}/edit" class="action-link text-warning ms-1">Edit</a> |
+                            <form action="/shows/{{ show.id }}/destroy" method="POST" class="form-delete ms-1">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-link-delete text-danger" onclick="return confirm('Are you sure you want to delete {{ show.title }}?')">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-4">No shows available. Click "Add a New Show" to create one!</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

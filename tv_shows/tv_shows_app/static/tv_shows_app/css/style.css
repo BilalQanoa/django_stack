@@ -1,0 +1,209 @@
+/* Base Styling */
+body {
+    background-color: #f8fafc; /* Very light slate */
+    font-family: 'Inter', sans-serif;
+    color: #334155;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Navbar Enhancements */
+.navbar {
+    background-color: #0f172a !important; /* Slate 900 */
+}
+.navbar-brand {
+    letter-spacing: -0.5px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #cbd5e1;
+    transition: color 0.2s;
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+/* Base Wrapper for centering forms */
+.form-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 200px);
+    padding: 0 15px;
+}
+
+/* --- Index Page Styles --- */
+.table-wrapper {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.025);
+}
+.table {
+    margin-bottom: 0;
+}
+.table thead th {
+    border-bottom: 2px solid #f1f5f9;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding-bottom: 15px;
+}
+.table td {
+    vertical-align: middle;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 15px 8px;
+}
+.table tbody tr:hover td {
+    background-color: #f8fafc;
+}
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.btn-custom {
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+.btn-custom:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+/* --- Form Styles (New / Edit) --- */
+.form-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.025);
+    width: 100%;
+    max-width: 650px;
+    padding: 40px;
+    border: 1px solid #e2e8f0;
+}
+.form-card.new-card { border-top: 4px solid #3b82f6; }
+.form-card.edit-card { border-top: 4px solid #f59e0b; }
+
+.form-label {
+    font-weight: 500;
+    color: #475569;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+.form-control {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    border-color: #93c5fd;
+}
+.edit-card .form-control:focus {
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+    border-color: #fcd34d;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.back-link:hover {
+    color: #3b82f6;
+}
+.edit-card .back-link:hover {
+    color: #f59e0b;
+}
+
+/* --- Show Page Styles --- */
+.detail-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.025);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+.card-header-custom {
+    background: #0f172a;
+    color: #ffffff;
+    padding: 40px 30px;
+    text-align: center;
+}
+.show-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.025em;
+}
+.info-row {
+    padding: 16px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+.info-row:last-child {
+    border-bottom: none;
+}
+.info-label {
+    font-weight: 600;
+    color: #64748b;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+}
+.info-value {
+    font-size: 1rem;
+    color: #1e293b;
+}
+
+.action-btns .btn {
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-weight: 500;
+    margin: 0 4px;
+    transition: all 0.2s;
+}
+.action-btns .btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Link button styles for tables */
+.action-link {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin: 0 6px;
+    transition: opacity 0.2s;
+}
+.action-link:hover {
+    opacity: 0.8;
+}
+.btn-link-delete {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.btn-link-delete:hover {
+    opacity: 0.8;
+}
+.form-delete {
+    display: inline;
+}
+
+/* Modern Utilities */
+.text-primary { color: #3b82f6 !important; }
+.text-warning { color: #f59e0b !important; }
+.text-danger { color: #ef4444 !important; }

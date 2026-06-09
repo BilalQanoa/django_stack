@@ -1,0 +1,75 @@
+{% extends 'tv_shows_app/base.html' %}
+
+{% block title %}TV Show ID {{ show.id }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="detail-card mb-4">
+                <div class="card-header-custom">
+                    <h1 class="show-title">{{ show.title }}</h1>
+                    <p class="mt-2 mb-0 opacity-75"><i class="fas fa-tv me-1"></i> {{ show.network }}</p>
+                </div>
+                <div class="card-body p-4 p-md-5">
+                    
+                    <div class="row info-row">
+                        <div class="col-md-4">
+                            <span class="info-label"><i class="fas fa-hashtag me-2"></i>Show ID</span>
+                        </div>
+                        <div class="col-md-8">
+                            <span class="info-value fw-bold text-primary">{{ show.id }}</span>
+                        </div>
+                    </div>
+
+                    <div class="row info-row">
+                        <div class="col-md-4">
+                            <span class="info-label"><i class="fas fa-calendar-alt me-2"></i>Release Date</span>
+                        </div>
+                        <div class="col-md-8">
+                            <span class="info-value">{{ show.release_date|date:"F j, Y" }}</span>
+                        </div>
+                    </div>
+
+                    <div class="row info-row">
+                        <div class="col-md-4">
+                            <span class="info-label"><i class="fas fa-align-left me-2"></i>Description</span>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="info-value mb-0" style="line-height: 1.6;">
+                                {% if show.description %}
+                                    {{ show.description }}
+                                {% else %}
+                                    <em class="text-muted">No description provided.</em>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row info-row">
+                        <div class="col-md-4">
+                            <span class="info-label"><i class="fas fa-clock me-2"></i>Last Updated</span>
+                        </div>
+                        <div class="col-md-8">
+                            <span class="info-value text-muted" style="font-size: 0.95rem;">{{ show.updated_at|date:"F j, Y, g:i a" }}</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer bg-white border-top p-4 d-flex justify-content-between align-items-center">
+                    <a href="/shows" class="text-decoration-none text-secondary fw-medium"><i class="fas fa-arrow-left me-1"></i> Back</a>
+                    <div class="action-btns">
+                        <a href="/shows/{{ show.id }}/edit" class="btn btn-warning text-dark"><i class="fas fa-edit me-1"></i> Edit</a>
+                        <form action="/shows/{{ show.id }}/destroy" method="POST" class="form-delete">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete {{ show.title }}?')">
+                                <i class="fas fa-trash-alt me-1"></i> Delete
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
