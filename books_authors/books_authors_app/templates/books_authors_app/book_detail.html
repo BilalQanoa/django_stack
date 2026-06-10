@@ -6,12 +6,15 @@
 <div class="row">
     <div class="col-lg-8 mx-auto">
         <div class="card p-5 mb-4">
+
+            <!-- book info -->  
             <h1 class="display-5 fw-bold mb-3 text-primary">{{ book.title }}</h1>
             <p class="text-muted mb-2"><strong>ID:</strong> {{ book.id }}</p>
             <p class="lead mb-4"><strong>Description:</strong><br>{{ book.desc }}</p>
             
             <hr class="my-4">
             
+            <!-- Authors related with this Book -->
             <h4 class="fw-bold mb-3">Authors</h4>
             {% if authors %}
                 <ul class="list-group mb-4 shadow-sm rounded-3">
@@ -26,6 +29,7 @@
                 <div class="alert alert-light border text-muted">No authors assigned to this book yet.</div>
             {% endif %}
             
+            <!-- available authors -->
             {% if available_authors %}
                 <div class="mt-4 p-4 bg-light rounded-3">
                     <form action="/books/{{ book.id }}" method="POST" class="d-flex align-items-end gap-3">
