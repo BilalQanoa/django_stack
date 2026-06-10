@@ -8,10 +8,10 @@ def shows(request):
     context = {
         'shows': Show.objects.all()
     }
-    return render(request, 'tv_shows_app/index.html', context)
+    return render(request, 'index.html', context)
 
 def new(request):
-    return render(request, 'tv_shows_app/new.html')
+    return render(request, 'new.html')
 
 def create(request):
     if request.method == "POST":
@@ -28,13 +28,13 @@ def show(request, id):
     context = {
         'show': Show.objects.get(id=id)
     }
-    return render(request, 'tv_shows_app/show.html', context)
+    return render(request, 'show.html', context)
 
 def edit(request, id):
     context = {
         'show': Show.objects.get(id=id)
     }
-    return render(request, 'tv_shows_app/edit.html', context)
+    return render(request, 'edit.html', context)
 
 def update(request, id):
     if request.method == "POST":

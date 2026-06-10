@@ -1,4 +1,4 @@
-{% extends 'tv_shows_app/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Add a New Show{% endblock %}
 
@@ -10,6 +10,7 @@
             <p class="text-muted">Enter the details of the TV show below</p>
         </div>
 
+        <!-- Add A New Show Form -->
         <form action="/shows/create" method="POST">
             {% csrf_token %}
             <div class="mb-3">
@@ -34,7 +35,9 @@
             </div>
 
             <div class="d-flex justify-content-between align-items-center">
+                <!-- Back Action -->
                 <a href="/shows" class="back-link"><i class="fas fa-arrow-left me-1"></i> Back to Shows</a>
+                <!-- Create Show Button -->
                 <button type="submit" class="btn btn-primary btn-custom shadow-sm">Create Show</button>
             </div>
         </form>

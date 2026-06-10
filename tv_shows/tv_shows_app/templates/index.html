@@ -1,4 +1,4 @@
-{% extends 'tv_shows_app/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}All Shows{% endblock %}
 
@@ -21,6 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Loop through the shows and display each one in a table row -->
                     {% for show in shows %}
                     <tr>
                         <td>{{ show.id }}</td>
