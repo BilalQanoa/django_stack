@@ -10,6 +10,17 @@
             <p class="text-muted">Update the details for {{ show.title }}</p>
         </div>
 
+        {% if messages %}
+            <div class="mb-4">
+            {% for message in messages %}
+                <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+
         <!-- Edit Show Info -->
         <form action="/shows/{{ show.id }}/update" method="POST">
             {% csrf_token %}
