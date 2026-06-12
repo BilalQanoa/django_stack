@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Course Confirmation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .warning-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .warning-header {
+            background-color: #dc3545;
+            color: white;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="card warning-card">
+        <div class="warning-header">
+            <h3>Are you sure you want to delete the following course?</h3>
+        </div>
+        <div class="card-body p-4">
+            <div class="mb-4 text-center">
+                <h4 class="fw-bold">{{ course.name }}</h4>
+                <p class="text-muted">{{ course.description.content }}</p>
+            </div>
+            
+            <div class="d-flex justify-content-between px-3">
+                <a href="/" class="btn btn-secondary px-4">No</a>
+                <form action="/courses/destroy/{{ course.id }}/delete" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger px-4">Yes, I want to delete this</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
